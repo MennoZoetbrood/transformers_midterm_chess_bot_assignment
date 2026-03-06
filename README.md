@@ -1,6 +1,6 @@
 # ♟️ MSweetbreadChess
 
-A chess-playing agent powered by a QLoRA fine-tuned Qwen2.5-1.5B model, built for the `INFOMTALC` (2025–2026) course's midterm chess tournament.
+A chess-playing agent powered by a QLoRA fine-tuned Qwen2.5-1.5B decoder model, built for the `INFOMTALC` (2025–2026) course's midterm chess tournament.
 ## How It Works
 
 The bot combines a language model backbone with deterministic chess heuristics to select moves:
