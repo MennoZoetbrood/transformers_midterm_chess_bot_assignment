@@ -7,14 +7,10 @@ from transformers import AutoModelForCausalLM, AutoTokenizer, BitsAndBytesConfig
 from peft import PeftModel
 
 # ---------------------------------------------------------------------------
-# Player base class — the instructor package exposes the same interface,
-# but we redefine it here so the file is self-contained during local testing.
-# When the championship runner imports TransformerPlayer it will override
-# the Player binding via its own package, which is fine because
-# TransformerPlayer.__bases__ is re-resolved at import time.
+# Player base class
 # ---------------------------------------------------------------------------
 try:
-    from chess_tournament import Player          # instructor package (Colab)
+    from chess_tournament import Player         
 except ImportError:
     class Player(ABC):
         def __init__(self, name: str):
@@ -26,7 +22,7 @@ except ImportError:
 
 
 # ---------------------------------------------------------------------------
-# Helper — must match the format used during fine-tuning exactly
+# Helper
 # ---------------------------------------------------------------------------
 def format_chess_prompt(fen: str, move: Optional[str] = None) -> str:
     """Format a FEN position into the prompt used during training."""
@@ -279,3 +275,4 @@ class TransformerPlayer(Player):
             return legal_moves[result].uci()
 
         return legal_moves[result.index(max(result))].uci()
+
