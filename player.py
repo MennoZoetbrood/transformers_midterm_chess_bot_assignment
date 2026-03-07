@@ -72,6 +72,8 @@ class TransformerPlayer(Player):
             base_model_id,
             quantization_config=BitsAndBytesConfig(
                 load_in_4bit=True,
+                bnb_4bit_use_double_quant=True,
+                bnb_4bit_quant_type='nf4',
                 bnb_4bit_compute_dtype=torch.float16,
             ),
             device_map="auto",
@@ -275,4 +277,5 @@ class TransformerPlayer(Player):
             return legal_moves[result].uci()
 
         return legal_moves[result.index(max(result))].uci()
+
 
